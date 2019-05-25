@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+git reset --hard
+git fetch && git rebase 
 
 npm install
 node update_album.js
