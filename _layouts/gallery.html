@@ -1,0 +1,38 @@
+---
+layout: page
+common-ext-css:
+- "/css/zoom.css"
+- "//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
+common-ext-js:
+- "/js/zoom.min.js"
+- "/js/gallery.js"
+- "https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"
+---
+
+<div>
+    <div id="gallery"></div>
+    <script>
+      const configuration = {
+        spacing: 5,
+        columns: 4,
+        maxHeight: 400,
+        shuffle: false,
+        albumId: "{{ page.albumId }}"
+      };
+
+      function doRender(config) {
+        const renderer = new HorizontalRenderer('gallery');
+        const albumId = configuration.albumId;
+        const toShow = albumId === 'latest' ? config.latestPhotosOfEachAlbum() : config.photos(albumId);
+        const photos = toShow.map(photo => new Photo(photo));
+        renderer.render(config, albumId, photos);
+        lazyload();
+      }
+
+      jQuery(document).ready(($) => {
+        $.get('{{ site.baseurl }}/config.json', (data) => {
+          doRender(new Config(data, configuration));
+        });
+      });
+    </script>
+</div>
