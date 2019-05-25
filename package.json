@@ -2,9 +2,6 @@
   "name": "google-photos-updater",
   "version": "0.0.1",
   "description": "",
-  "bin": {
-    "scrape-google-photos": "./index.js"
-  },
   "dependencies": {
     "@types/puppeteer": "^1.12.4",
     "phantom": "^6.0.3",
