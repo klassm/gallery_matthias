@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const puppeteer = require('puppeteer');
+const process = require('process');
 const fs = require('fs');
 
 function urlFor(baseUrl, width, height) {
@@ -32,7 +33,11 @@ function extractImagesFrom(text) {
 }
 
 async function providePhotosInAlbumWithUrl(url) {
-  const browser = await puppeteer.launch();
+  const launchOptions = process.env.PUPPETEER_CHROME_BIN ? {
+    executablePath: process.env.PUPPETEER_CHROME_BIN
+  }: undefined;
+  const browser = await puppeteer.launch(launchOptions);
+
   const page = await browser.newPage();
   let resolve;
   const imagesFoundPromise = new Promise(resolveFct => {
