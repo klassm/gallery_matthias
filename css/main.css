@@ -804,7 +804,3 @@ td.gutter {
 #gallery img[data-action="zoom"] {
     border: 3px transparent solid;
 }
-
-#gallery img:hover {
-    border-color: #c1b500;
-}
