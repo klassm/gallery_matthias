@@ -37,7 +37,7 @@ async function providePhotosInAlbumWithUrl(url) {
 
   const launchOptions = process.env.PUPPETEER_CHROME_BIN ? {
     executablePath: process.env.PUPPETEER_CHROME_BIN
-  }: undefined;
+  } : undefined;
   const browser = await puppeteer.launch(launchOptions);
 
   const page = await browser.newPage();
