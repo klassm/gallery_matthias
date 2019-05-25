@@ -33,6 +33,8 @@ function extractImagesFrom(text) {
 }
 
 async function providePhotosInAlbumWithUrl(url) {
+  console.log('downloading from ' + url);
+
   const launchOptions = process.env.PUPPETEER_CHROME_BIN ? {
     executablePath: process.env.PUPPETEER_CHROME_BIN
   }: undefined;
