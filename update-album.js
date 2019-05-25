@@ -46,17 +46,22 @@ async function providePhotosInAlbumWithUrl(url) {
 
   await page.on('response', async response => {
     if (response.url().startsWith("https://photos.google.com/share/")) {
+      console.log("found required response incl. images");
       const text = await response.text();
       resolve(extractImagesFrom(text));
     }
   });
 
-  await page.goto(url);
-  const foundImages = await imagesFoundPromise;
-  // const withOrderKey = await Promise.all(foundImages.map(async image => await addOrderKeyTo(image)));
-  // const sorted = withOrderKey.sort((a, b) => normalizeFilename(a.filename) < normalizeFilename(b.filename) ? 1 : -1);
+  console.log("launched");
 
-  const photos = foundImages
+  await page.goto(url);
+  console.log("opened " + url);
+
+  const foundImages = await imagesFoundPromise;
+  await browser.close();
+
+  console.log(`found ${foundImages.length} images`);
+  return foundImages
     .map(({url, width, height}) => {
       const {width: fullWidth, height: fullHeight} = calculateWidthAndHeightFor(width, height, 1920);
       const {width: previewWidth, height: previewHeight} = calculateWidthAndHeightFor(width, height, 1000);
@@ -70,9 +75,6 @@ async function providePhotosInAlbumWithUrl(url) {
         height: fullHeight
       };
     });
-
-  await browser.close();
-  return photos;
 }
 
 const config = [
