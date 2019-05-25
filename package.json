@@ -4,7 +4,6 @@
   "description": "",
   "dependencies": {
     "@types/puppeteer": "^1.12.4",
-    "phantom": "^6.0.3",
     "puppeteer": "^1.16.0"
   }
 }
