@@ -85,4 +85,8 @@ html, body{
   background-color: #472305;
 }
 
-
+.footer .author {
+  color: #939393;
+  margin: 5px;
+  font-size: 12px;
+}

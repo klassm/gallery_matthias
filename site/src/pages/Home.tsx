@@ -18,7 +18,7 @@ class Home extends Component<StateProps> {
       .reduce((a, b) => [...a, ...b], [])
       .map(photo => ({
         original: photo.path,
-        thumbnail: photo.compressed_path
+        thumbnail: photo.thumbnailPath
       })));
   }
 

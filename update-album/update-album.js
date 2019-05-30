@@ -67,11 +67,8 @@ async function providePhotosInAlbumWithUrl(url) {
     .map(({url, width, height}) => {
       const {width: fullWidth, height: fullHeight} = calculateWidthAndHeightFor(width, height, 1920);
       const {width: previewWidth, height: previewHeight} = calculateWidthAndHeightFor(width, height, 1000);
-      const {width: placeholderWidth, height: placeholderHeight} = calculateWidthAndHeightFor(width, height, 30);
       return {
-        compressed_path: urlFor(url, previewWidth, previewHeight),
-        compressed: true,
-        placeholder_path: urlFor(url, placeholderWidth, placeholderHeight),
+        thumbnailPath: urlFor(url, previewWidth, previewHeight),
         path: urlFor(url, fullWidth, fullHeight),
         width: fullWidth,
         height: fullHeight
@@ -89,5 +86,6 @@ const config = [
   for (const item of config) {
     result[item.name] = await providePhotosInAlbumWithUrl(item.url);
   }
-  fs.writeFileSync('config.json', JSON.stringify(result));
+  fs.writeFileSync('../site/public/config.json', JSON.stringify(result));
+  fs.writeFileSync('../docs/config.json', JSON.stringify(result));
 })();

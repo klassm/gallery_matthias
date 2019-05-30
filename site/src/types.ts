@@ -3,8 +3,8 @@ export interface ImageData {
 }
 
 export interface Image {
-  compressed_path: string;
+  thumbnailPath: string;
   path: string;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
 }

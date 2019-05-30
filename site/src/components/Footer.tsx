@@ -8,7 +8,7 @@ interface FooterIconProps {
 }
 
 function FooterIcon(props: FooterIconProps) {
-  return <a className="footerIcon" href={props.link} target="_blank">
+  return <a className="footerIcon" href={props.link} target="_blank" rel="noopener noreferrer">
     <FontAwesomeIcon icon={props.icon}/>
   </a>
 }
@@ -20,6 +20,9 @@ export default function Footer() {
       <FooterIcon icon={faInstagram} link="http://instagram.com/klassm"/>
       <FooterIcon icon={faTwitter} link="https://twitter.com/klassm"/>
       <FooterIcon icon={faGithub} link="https://github.com/klassm"/>
+    </div>
+    <div className="author">
+      Matthias Klaß &#9702; photos.klass.li
     </div>
   </div>;
 }

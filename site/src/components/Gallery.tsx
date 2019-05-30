@@ -19,14 +19,23 @@ class Gallery extends Component<OuterProps & StateProps> {
     return this.props.images[this.props.albumId] || [];
   }
 
+  private getThumbnailWidthAndHeight(photo: Image) {
+    const targetWidth = 320;
+    const targetHeight = 212;
+    const { height, width } = photo;
+    const ratio = height > width ? targetHeight / height : targetWidth / width;
+    return { width: Math.floor(width * ratio), height: Math.floor(height * ratio) };
+  }
+
   public render() {
     const albumPhotos: Image[] = this.getPhotos().reverse();
     const images = albumPhotos.map(photo => {
+      const { width: thumbnailWidth, height: thumbnailHeight} = this.getThumbnailWidthAndHeight(photo);
       return {
         src: photo.path,
-        thumbnail: photo.compressed_path,
-        thumbnailWidth: 320,
-        thumbnailHeight: 212
+        thumbnail: photo.thumbnailPath,
+        thumbnailWidth,
+        thumbnailHeight
       }
     });
 
