@@ -10,6 +10,7 @@ import Header from './components/Header';
 import store from './store/store';
 import './App.css';
 import Footer from './components/Footer';
+import Nature from "./pages/Nature";
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path="/macro" component={Macro}/>
                   <Route path="/landscape" component={Landscape}/>
+                  <Route path="/nature" component={Nature}/>
                 </Container>
               </div>
               <Footer/>

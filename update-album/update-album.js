@@ -79,6 +79,7 @@ async function providePhotosInAlbumWithUrl(url) {
 const config = [
   {name: 'Macro', url: 'https://photos.app.goo.gl/EiaCXB9gmGcz1GeG7'},
   {name: 'Landscape', url: 'https://photos.app.goo.gl/aooocpwV7U16zATF8'},
+  {name: 'Nature', url: 'https://photos.app.goo.gl/EVTayVR3MFa7HCHs8'},
 ];
 
 (async () => {
