@@ -24,7 +24,7 @@ class Home extends Component<StateProps> {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <ImageGallery items={this.getPhotos()} autoPlay={true}/>
       </div>
     );
