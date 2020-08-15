@@ -37,6 +37,7 @@ jobs:
 
       - name: Commit result
         run: |
+          cd gallery_matthias
           git add site/public/config.json
           git add docs/config.json
           git config --global user.email "gallerymatthias_github@klass.li"
