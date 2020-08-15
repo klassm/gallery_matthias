@@ -28,11 +28,17 @@ jobs:
       - name: Checkout
         run: git clone git@github.com:klassm/gallery_matthias.git
 
-      - name: Update Images
+      - name: Install dependencies
         run: |
-          cd gallery_matthias
-          (cd update-album && npm install)
-          (cd update-album && PUPPETEER_CHROME_BIN="/usr/bin/chromium-browser" node update-album.js)
+          cd gallery_matthias/update-album && npm install
+
+      - name: Update images
+        uses: ianwalter/puppeteer@v2.0.0
+        with:
+          args: cd gallery_matthias/update-album && node update-album.js
+
+      - name: Commit result
+        run: |
           git add site/public/config.json
           git add docs/config.json
           git config --global user.email "gallerymatthias_github@klass.li"
