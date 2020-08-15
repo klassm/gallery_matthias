@@ -20,7 +20,7 @@ const availableLinks = [{
   link: '/city'
 }, {
   title: 'Plants',
-  link: '/Plants'
+  link: '/plants'
 }];
 
 interface HeaderState {
