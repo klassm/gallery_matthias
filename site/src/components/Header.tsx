@@ -12,6 +12,15 @@ const availableLinks = [{
 }, {
   title: 'Nature',
   link: '/nature'
+}, {
+  title: 'Animals',
+  link: '/animals'
+}, {
+  title: 'City',
+  link: '/city'
+}, {
+  title: 'Plants',
+  link: '/Plants'
 }];
 
 interface HeaderState {
@@ -30,31 +39,32 @@ export default class Header extends Component<HeaderProps, HeaderState> {
   }
 
   private setNavExpanded(expanded: boolean) {
-    this.setState({ navExpanded: expanded });
+    this.setState({navExpanded: expanded});
   };
 
   private closeNav() {
-    this.setState({ navExpanded: false });
+    this.setState({navExpanded: false});
   }
 
   public render() {
-    const links = availableLinks.map(({ title, link }) => {
+    const links = availableLinks.map(({title, link}) => {
       return <LinkContainer to={link} key={link} onSelect={this.closeNav.bind(this)}>
         <NavLink>{title}</NavLink>
       </LinkContainer>
     });
     return (
-        <Navbar className="navbar navbar-dark bg-dark" expand="lg" onToggle={this.setNavExpanded.bind(this)} expanded={this.state.navExpanded}>
-          <LinkContainer to="/" onClick={this.closeNav.bind(this)}>
-            <Navbar.Brand>Gallery</Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-              {links}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+      <Navbar className="navbar navbar-dark bg-dark" expand="lg" onToggle={this.setNavExpanded.bind(this)}
+              expanded={this.state.navExpanded}>
+        <LinkContainer to="/" onClick={this.closeNav.bind(this)}>
+          <Navbar.Brand>Gallery</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            {links}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 };
