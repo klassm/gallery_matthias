@@ -1,0 +1,40 @@
+name: Update images
+on:
+  repository_dispatch:
+    types: [update_images]
+
+  workflow_dispatch:
+    inputs:
+
+  schedule:
+    - cron:  '0 12 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    if: github.actor == github.event.repository.owner.login
+
+    steps:
+      - name: Configure SSH keys
+        env:
+          deployment_private_key: ${{ secrets.deployment_private_key }}
+        run: |
+          mkdir ~/.ssh
+          echo "${{ secrets.deployment_private_key }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Checkout
+        run: git clone git@github.com:klassm/gallery_matthias.git
+
+      - name: Release
+        run: |
+          cd gallery_matthias
+          (cd update-album && npm install)
+          (cd update-album && PUPPETEER_CHROME_BIN="/usr/bin/chromium-browser" node update-album.js)
+          git add site/public/config.json
+          git add docs/config.json
+          git commit -am "update photos"
+          git push
+
