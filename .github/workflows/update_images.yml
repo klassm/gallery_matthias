@@ -33,9 +33,7 @@ jobs:
           cd gallery_matthias/update-album && npm install
 
       - name: Update images
-        uses: ianwalter/puppeteer@v2.0.0
-        with:
-          args: cd gallery_matthias/update-album && node update-album.js
+        run: cd gallery_matthias/update-album && node update-album.js
 
       - name: Commit result
         run: |
