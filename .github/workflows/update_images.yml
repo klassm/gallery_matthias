@@ -28,13 +28,15 @@ jobs:
       - name: Checkout
         run: git clone git@github.com:klassm/gallery_matthias.git
 
-      - name: Release
+      - name: Update Images
         run: |
           cd gallery_matthias
           (cd update-album && npm install)
           (cd update-album && PUPPETEER_CHROME_BIN="/usr/bin/chromium-browser" node update-album.js)
           git add site/public/config.json
           git add docs/config.json
+          git config --global user.email "gallerymatthias_github@klass.li"
+          git config --global user.name "Gallery Updater Github"
           git commit -am "update photos"
           git push
 
