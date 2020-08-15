@@ -4,7 +4,7 @@ import Gallery from '../components/Gallery';
 const Plants: React.FC = () => {
   return (
     <div>
-      <Gallery albumId="City"/>
+      <Gallery albumId="Plants"/>
     </div>
   );
 };

@@ -10,9 +10,6 @@ const availableLinks = [{
   title: 'Macro',
   link: '/macro'
 }, {
-  title: 'Nature',
-  link: '/nature'
-}, {
   title: 'Animals',
   link: '/animals'
 }, {

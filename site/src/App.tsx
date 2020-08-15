@@ -10,9 +10,9 @@ import Header from './components/Header';
 import store from './store/store';
 import './App.css';
 import Footer from './components/Footer';
-import Animals from "./pages/Animals";
 import City from "./pages/City";
 import Plants from "./pages/Plants";
+import Animals from "./pages/Animals";
 
 class App extends Component {
   render() {
@@ -31,7 +31,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path="/macro" component={Macro}/>
                   <Route path="/landscape" component={Landscape}/>
-                  <Route path="/nature" component={Animals}/>
+                  <Route path="/animals" component={Animals}/>
                   <Route path="/city" component={City}/>
                   <Route path="/plants" component={Plants}/>
                 </Container>
